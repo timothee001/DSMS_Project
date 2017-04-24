@@ -21,7 +21,9 @@ public class Main {
 		.setOAuthAccessTokenSecret("0I6DRWcmbz2oF76Socmg6OedRUoar6u0FcD9MtJaceK0j"); 
 		
 		TwitterStream twittFactory = new TwitterStreamFactory(cb.build()).getInstance(); 
-		TweetListener2 list = new TweetListener2(conn); twittFactory.addListener(list); twittFactory.sample();
+		TweetListener2 list = new TweetListener2(conn); 
+		twittFactory.addListener(list);
+		twittFactory.sample();
 		
 	}
 
