@@ -1,11 +1,17 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 import twitter4j.TwitterStream;
 import twitter4j.TwitterStreamFactory;
 import twitter4j.conf.ConfigurationBuilder;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 		// TODO Auto-generated method stub
+		
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/twitter?useUnicode=yes&characterEncoding=UTF8&" + "user=root&password=root");
 		System.out.println("Salut");
 		
 		ConfigurationBuilder cb = new ConfigurationBuilder(); 
@@ -16,7 +22,6 @@ public class Main {
 		
 		TwitterStream twittFactory = new TwitterStreamFactory(cb.build()).getInstance(); 
 		TweetListener2 list = new TweetListener2(conn); twittFactory.addListener(list); twittFactory.sample();
-		
 		
 	}
 
