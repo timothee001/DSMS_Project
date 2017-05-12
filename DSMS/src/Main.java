@@ -10,9 +10,10 @@ public class Main {
 
 	public static void main(String[] args) throws SQLException {
 		// TODO Auto-generated method stub
-		
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/twitter?useUnicode=yes&characterEncoding=UTF8&" + "user=root&password=root");
 		System.out.println("Salut");
+		
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/twitter", "root", "password");
+		//Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/twitter?useUnicode=yes&characterEncoding=UTF8&" + "user=root&password=");
 		
 		ConfigurationBuilder cb = new ConfigurationBuilder(); 
 		cb.setDebugEnabled(true).setOAuthConsumerKey("basXIvROD3J1BSAvWOWwxm2Wi")

@@ -28,7 +28,7 @@ public class TweetListener2 implements StatusListener {
         users = new HashSet<Long>();
 
         try {
-            DetectorFactory.loadProfile("profiles");
+            DetectorFactory.loadProfile("/Users/paulvercoustre/DSMS_Project/DSMS/TopicTwitter/profiles");
 
 
         } catch (Exception e) {
