@@ -65,18 +65,12 @@ public class ARFFConvert {
 		        		+ "@attribute 'x' numeric\n"
 		        		+ "@attribute 'y' numeric\n"
 		        		+ "@attribute 'z' numeric\n"
-		        		
-		        		
-		   
 		        		+ "@data\n");
 		       
 		        while (rs.next()) {
 		            String text = rs.getString("text");
-		            
-		        
 		            if(!text.isEmpty()||!text.equals("\n"))
-		            	System.out.println(text);
-		            		         
+		            	System.out.println(text);  		         
 		            try {
 		            	
 		            	TreeMap<String,Integer> m = new TreeMap<String,Integer>();
@@ -109,10 +103,7 @@ public class ARFFConvert {
 		            		  toWrite+=value+",";
 		            		  
 		            		  //System.out.println(key + " => " + value);
-		            		}
-		            	
-		            	
-		           
+		            		}	           
 		                writer.write(toWrite.substring(0, toWrite.length()-1)+"\n");
 		            } catch (Exception e) {
 		                e.printStackTrace();

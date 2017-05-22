@@ -1,7 +1,9 @@
 package Clustering;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.Enumeration;
 
 import weka.clusterers.SimpleKMeans;
@@ -27,6 +29,8 @@ public class Cluster {
 	}
  
 	public static void main(String[] args) throws Exception {
+		
+		int clustNumber = 10;
 		SimpleKMeans kmeans = new SimpleKMeans();
 		ManhattanDistance m = new ManhattanDistance();
 		kmeans.setDistanceFunction(m);
@@ -36,13 +40,11 @@ public class Cluster {
  
 		//important parameter to set: preserver order, number of cluster.
 		kmeans.setPreserveInstancesOrder(true);
-		kmeans.setNumClusters(7);
+		kmeans.setNumClusters(clustNumber);
  
 		BufferedReader datafile = readDataFile("C://Users//Timothee//workspace//DSMS//ARFFTweets.arff"); 
 		Instances data = new Instances(datafile);
-		
- 
- 
+
 		kmeans.buildClusterer(data);
  
 		// This array returns the cluster number (starting with 0) for each instance
@@ -50,10 +52,23 @@ public class Cluster {
 		int[] assignments = kmeans.getAssignments();
  
 		int i=0;
+		
+		 BufferedWriter writer = null;
+		    writer = new BufferedWriter(new FileWriter("Kmean "+clustNumber+" clusters.txt"));
+		
 		for(int clusterNum : assignments) {
-		    System.out.printf("Tweet %d -> Cluster %d \n", i, clusterNum);
+			 writer.write("Tweet "+i+" -> Cluster "+clusterNum+" \n");
+		   
 		    i++;
 		}
+	
+        try {
+            // Close the writer regardless of what happens...
+            writer.close();
+        } catch (Exception e) {
+        }
+		
+		
 		
 		
 		

@@ -18,7 +18,7 @@ import twitter4j.conf.ConfigurationBuilder;
 public class FillDatabase {
 
 	
-	public static void viewTable(Connection con, String dbName)
+	public static void writeTableOnFile(Connection con, String dbName)
 			
 		
 		    throws SQLException, IOException {
@@ -60,15 +60,7 @@ public class FillDatabase {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
-		//CREATE SCHEMA `twitter` ;
-
-		//CREATE TABLE tweet (     idTweet BIGINT PRIMARY KEY NOT NULL,     text Text,     date DATE,     iduser BIGINT ) 
-		//CREATE TABLE user (     iduser BIGINT PRIMARY KEY NOT NULL,     numFollowers INT,     numFriends INT,     createdAt DATE )
-
-	
-		
-		 
+				 
 		 
 		Connection conn;
 		
@@ -77,10 +69,7 @@ public class FillDatabase {
 					+ "mysql://localhost/twitter?useUnicode=yes&characterEncoding=UTF8&"
 					+ "user=root&password=ilovemysql");
 			
-			 //viewTable(conn,"twitter.tweet");
-			 
-			 
-			 
+			 //viewTable(conn,"twitter.tweet");	 
 				ConfigurationBuilder cb = new ConfigurationBuilder();  
 				
 				
@@ -100,10 +89,7 @@ public class FillDatabase {
 			System.out.println(e.toString());
 		}
 		
-			
-			 
-			 
-			
+					
 		
 		
 	}
