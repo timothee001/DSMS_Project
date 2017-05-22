@@ -30,12 +30,13 @@ public class Cluster {
  
 	public static void main(String[] args) throws Exception {
 		
+		//We set cluster number and specify the chosen metric 
 		int clustNumber = 10;
 		SimpleKMeans kmeans = new SimpleKMeans();
 		ManhattanDistance m = new ManhattanDistance();
 		kmeans.setDistanceFunction(m);
 		
- 
+		//we set a seed to put randomly the initial barycentres
 		kmeans.setSeed(10);
  
 		//important parameter to set: preserver order, number of cluster.
@@ -61,6 +62,8 @@ public class Cluster {
 		   
 		    i++;
 		}
+		
+		
 	
         try {
             // Close the writer regardless of what happens...

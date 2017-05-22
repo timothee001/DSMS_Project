@@ -17,7 +17,7 @@ import twitter4j.conf.ConfigurationBuilder;
 
 public class FillDatabase {
 
-	
+	//This function copy the content of the database on a file, it only take into account the text of the tweets
 	public static void writeTableOnFile(Connection con, String dbName)
 			
 		

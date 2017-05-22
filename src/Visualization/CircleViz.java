@@ -26,7 +26,9 @@ public class CircleViz {
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 
-		TreeSet<Couple> allCouplesSort = new TreeSet<Couple>();		
+		
+		//We read and load the tweets we obtained in the hadoop job
+		TreeSet<Edge> allCouplesSort = new TreeSet<Edge>();		
 		BufferedReader br = new BufferedReader(new FileReader("inputGraph.txt"));
 		try {
 		    StringBuilder sb = new StringBuilder();
@@ -38,7 +40,7 @@ public class CircleViz {
 		        if(line!=null){
 		        	 
 				        String [] tab = line.split(",");
-				        Couple c= new Couple();
+				        Edge c= new Edge();
 				        c.first=tab[0];
 				        c.second = tab[1];
 				        c.count = Integer.parseInt(tab[2]);
@@ -60,7 +62,7 @@ public class CircleViz {
 		
 		for(int i =0;i<allCouplesSort.size();i++){
 			
-	    		Couple c=allCouplesSort.pollLast();
+	    		Edge c=allCouplesSort.pollLast();
 	    		g.addEdge(c.first+"*"+c.second, c.first,c.second);
 	    	
 		}

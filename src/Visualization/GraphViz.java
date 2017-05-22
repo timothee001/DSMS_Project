@@ -137,7 +137,7 @@ public class GraphViz {
     public static Graph<String, String> readNet(String string) throws IOException {
     	
     	
-    	TreeSet<Couple> allCouplesSort = new TreeSet<Couple>();		
+    	TreeSet<Edge> allCouplesSort = new TreeSet<Edge>();		
 		BufferedReader br = new BufferedReader(new FileReader("inputGraph.txt"));
 		try {
 		    StringBuilder sb = new StringBuilder();
@@ -149,7 +149,7 @@ public class GraphViz {
 		        if(line!=null){
 		        	 
 				        String [] tab = line.split(",");
-				        Couple c= new Couple();
+				        Edge c= new Edge();
 				        c.first=tab[0];
 				        c.second = tab[1];
 				        c.count = Integer.parseInt(tab[2]);
@@ -170,7 +170,7 @@ public class GraphViz {
 
 		for(int i =0;i<allCouplesSort.size();i++){
 			
-	    		Couple c=allCouplesSort.pollLast();
+	    		Edge c=allCouplesSort.pollLast();
 	    		g2.addEdge(c.first+"*"+c.second, c.first,c.second,EdgeType.UNDIRECTED);
 	    	
 		}

@@ -14,8 +14,9 @@ import java.util.TreeMap;
 
 public class ARFFConvert {
 	
-	public static void viewTable(Connection con, String dbName)
+	public static void ARFFWriteFile(Connection con, String dbName)
 	
+			
 	
 		    throws SQLException, IOException {
 		    BufferedWriter writer = null;
@@ -24,9 +25,13 @@ public class ARFFConvert {
 		    String query = "select text " +
 		                   
 		                   "from " + dbName;
+		    
+		    //We respect the ARFF Syntax in order to be readable by the library
 		    try {
 		        stmt = con.createStatement();
 		        ResultSet rs = stmt.executeQuery(query);
+		        
+		        //The prefixe takes in account all alphabet and numbers
 		        
 		        writer.write("@relation tweet\n"
 		        		+ "@attribute '0' numeric\n"
@@ -67,6 +72,8 @@ public class ARFFConvert {
 		        		+ "@attribute 'z' numeric\n"
 		        		+ "@data\n");
 		       
+		        //this part of the code compute for every text of the tweets the number of occurence of each characters. We lower case everything
+		        //to have the right count
 		        while (rs.next()) {
 		            String text = rs.getString("text");
 		            if(!text.isEmpty()||!text.equals("\n"))
@@ -130,7 +137,7 @@ public class ARFFConvert {
 					+ "mysql://localhost/twitter?useUnicode=yes&characterEncoding=UTF8&"
 					+ "user=root&password=ilovemysql");
 			 
-		viewTable(conn,"twitter.tweet");
+		ARFFWriteFile(conn,"twitter.tweet");
 
 	}
 
